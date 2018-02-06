@@ -134,11 +134,19 @@ input LinkWhereUniqueInput {
 
 scalar Long
 
+# type Mutation {
+#   createLink(data: LinkCreateInput!): Link!
+#   updateLink(data: LinkUpdateInput!, where: LinkWhereUniqueInput!): Link
+#   deleteLink(where: LinkWhereUniqueInput!): Link
+#   upsertLink(where: LinkWhereUniqueInput!, create: LinkCreateInput!, update: LinkUpdateInput!): Link!
+#   updateManyLinks(data: LinkUpdateInput!, where: LinkWhereInput!): BatchPayload!
+#   deleteManyLinks(where: LinkWhereInput!): BatchPayload!
+# }
+
 type Mutation {
   createLink(data: LinkCreateInput!): Link!
   updateLink(data: LinkUpdateInput!, where: LinkWhereUniqueInput!): Link
   deleteLink(where: LinkWhereUniqueInput!): Link
-  upsertLink(where: LinkWhereUniqueInput!, create: LinkCreateInput!, update: LinkUpdateInput!): Link!
   updateManyLinks(data: LinkUpdateInput!, where: LinkWhereInput!): BatchPayload!
   deleteManyLinks(where: LinkWhereInput!): BatchPayload!
 }
@@ -163,9 +171,14 @@ type PageInfo {
 type Query {
   links(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Link]!
   link(where: LinkWhereUniqueInput!): Link
-  linksConnection(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LinkConnection!
-  node(id: ID!): Node
 }
+
+# type Query {
+#   links(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Link]!
+#   link(where: LinkWhereUniqueInput!): Link
+#   linksConnection(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LinkConnection!
+#   node(id: ID!): Node
+# }
 
 type Subscription {
   link(where: LinkSubscriptionWhereInput): LinkSubscriptionPayload

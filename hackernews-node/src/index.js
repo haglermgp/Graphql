@@ -1,9 +1,11 @@
 const { GraphQLServer } = require('graphql-yoga')
 const { Prisma } = require('prisma-binding')
 const Query = require('./resolvers/Query')
+const Mutation = require('./resolvers/Mutation')
 
 const resolvers = {
-  Query
+  Query,
+  Mutation
   // Query: {
   //   feed (parent, args, ctx, info) {
   //     return ctx.db.query.posts({ where: { isPublished: true } }, info)
@@ -50,12 +52,12 @@ const server = new GraphQLServer({
     ...req,
     db: new Prisma({
       typeDefs: 'src/generated/prisma.graphql',
-      // endpoint: 'https://eu1.prisma.sh/public-hornseeker-483/hackernews-node/dev', // the endpoint of the Prisma DB service
-      endpoint: 'https://localhost:60000/hackernews-node/test', // the endpoint of the Prisma DB service
+      // endpoint: 'https://localhost:6000/hackernews-node/dev', // the endpoint of the Prisma DB service
+      endpoint: 'https://eu1.prisma.sh/public-hornseeker-483/hackernews-node/dev', // the endpoint of the Prisma DB service
       secret: 'mysecret123' // specified in database/prisma.yml
       // debug: true // log all GraphQL queryies & mutations
     })
   })
 })
 
-server.start(() => console.log('Server is running on http://localhost:6000'))
+server.start(() => console.log('Server is running on http://localhost:4000'))

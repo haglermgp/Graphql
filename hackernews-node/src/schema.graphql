@@ -12,3 +12,11 @@ type Query {
 #   deletePost(id: ID!): Post
 #   publish(id: ID!): Post
 # }
+
+type Mutation {
+	post(url: String!, description: String!): Link!
+}
+
+type Pages {
+	description: String!
+}
